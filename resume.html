@@ -1,1 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume — Rocco Fazzalari</title>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:        #FFC904;
+      --gold-light:  #FFD740;
+      --gold-dim:    rgba(255,201,4,0.10);
+      --gold-border: rgba(255,201,4,0.28);
+      --bg:          #0b0b0b;
+      --bg-card:     #141414;
+      --bg-alt:      #101010;
+      --text:        #f2f2f2;
+      --text-soft:   #b8c2cc;
+      --text-muted:  #8a95a5;
+      --border:      rgba(255,255,255,0.07);
+      --ease:        cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ══ NAV ══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 0.95rem; font-weight: 900;
+      letter-spacing: 3px; color: var(--gold);
+      text-transform: uppercase; text-decoration: none;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      transition: color 0.25s var(--ease);
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    .nav-print {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--gold); color: #000;
+      padding: 8px 18px; border-radius: 6px;
+      font-size: 0.76rem; font-weight: 700;
+      border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.25s var(--ease);
+    }
+    .nav-print:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255,201,4,0.3);
+    }
+
+    /* ══ HERO ══ */
+    .hero {
+      padding: 110px 48px 56px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 55% at 50% 42%, rgba(255,201,4,0.07) 0%, transparent 65%);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 18px;
+    }
+
+    .pulse {
+      width: 7px; height: 7px;
+      background: var(--gold); border-radius: 50%;
+      animation: pulse 2.5s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(255,201,4,0.5); }
+      50%      { opacity:0.7; box-shadow: 0 0 0 7px rgba(255,201,4,0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 900; line-height: 1;
+      letter-spacing: -2px; margin-bottom: 8px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(130deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    .hero-role {
+      font-size: 1rem; color: var(--text-muted);
+      font-weight: 500; margin-bottom: 22px; letter-spacing: 0.5px;
+    }
+
+    .hero-summary {
+      font-size: 0.92rem; color: var(--text-soft);
+      max-width: 640px; margin: 0 auto 32px; line-height: 1.88;
+    }
+
+    .hero-chips {
+      display: flex; flex-wrap: wrap; gap: 9px;
+      justify-content: center;
+    }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-soft);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 500;
+    }
+
+    .chip i { color: var(--gold); font-size: 0.68rem; }
+
+    /* ══ CAREER TIMELINE BAR ══ */
+    .tbar-wrap {
+      max-width: 860px; margin: 52px auto 0;
+      padding: 0 48px;
+    }
+
+    .tbar-labels {
+      display: flex; justify-content: space-between;
+      font-size: 0.68rem; color: var(--text-muted);
+      margin-bottom: 8px; letter-spacing: 0.4px;
+    }
+
+    .tbar-track {
+      position: relative; height: 4px;
+      background: rgba(255,255,255,0.06); border-radius: 2px;
+    }
+
+    .tbar-fill {
+      position: absolute; top: 0; left: 0;
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px; transition: width 1.6s var(--ease);
+    }
+
+    .tbar-dots { position: relative; height: 30px; margin-top: 5px; }
+
+    .tbar-dot {
+      position: absolute; top: 0;
+      display: flex; flex-direction: column; align-items: center;
+      transform: translateX(-50%);
+    }
+
+    .tbar-dot-circle {
+      width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%;
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+
+    .tbar-dot-lbl {
+      font-size: 0.6rem; color: var(--text-muted);
+      margin-top: 5px; white-space: nowrap;
+    }
+
+    /* ══ TABS ══ */
+    .tabs-wrap {
+      max-width: 1000px; margin: 64px auto 0;
+      padding: 0 48px 100px;
+    }
+
+    .tab-nav {
+      display: flex; gap: 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px; overflow-x: auto;
+    }
+
+    .tab-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.5px;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: all 0.25s var(--ease); white-space: nowrap;
+    }
+
+    .tab-btn:hover { color: var(--text-soft); }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .tab-btn i { font-size: 0.72rem; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ══ EXPERIENCE TIMELINE ══ */
+    .exp-timeline { position: relative; }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute; left: 15px; top: 8px; bottom: 8px;
+      width: 1px; background: var(--border);
+    }
+
+    .exp-item {
+      position: relative; padding-left: 52px; margin-bottom: 18px;
+    }
+
+    .exp-dot {
+      position: absolute; left: 8px; top: 22px;
+      width: 15px; height: 15px;
+      background: var(--bg); border: 2px solid var(--gold-border);
+      border-radius: 50%; transition: all 0.25s var(--ease);
+    }
+
+    .exp-item.open .exp-dot,
+    .exp-item:hover .exp-dot {
+      background: var(--gold); border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(255,201,4,0.4);
+    }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      transition: border-color 0.28s var(--ease);
+    }
+
+    .exp-item.open .exp-card,
+    .exp-item:hover .exp-card { border-color: var(--gold-border); }
+
+    .exp-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer; user-select: none;
+    }
+
+    .exp-header-left { flex: 1; }
+
+    .exp-company-row {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 4px;
+    }
+
+    .exp-company {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 1px; text-transform: uppercase;
+    }
+
+    .exp-current {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25);
+      color: #6ee7a0; padding: 2px 8px; border-radius: 100px;
+      font-size: 0.62rem; font-weight: 600;
+    }
+
+    .exp-current-dot {
+      width: 5px; height: 5px;
+      background: #6ee7a0; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .exp-role { font-size: 0.98rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+
+    .exp-meta {
+      display: flex; align-items: center; gap: 16px;
+      font-size: 0.74rem; color: var(--text-muted);
+    }
+    .exp-meta i { font-size: 0.62rem; }
+
+    .exp-chevron {
+      color: var(--text-muted); font-size: 0.75rem;
+      transition: transform 0.3s var(--ease), color 0.25s;
+      flex-shrink: 0; margin-left: 16px;
+    }
+
+    .exp-item.open .exp-chevron { transform: rotate(180deg); color: var(--gold); }
+
+    .exp-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.45s var(--ease);
+    }
+
+    .exp-item.open .exp-body { max-height: 700px; }
+
+    .exp-body-inner {
+      padding: 4px 24px 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-bullets { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 11px; }
+
+    .exp-bullets li {
+      display: flex; gap: 12px;
+      font-size: 0.86rem; color: var(--text-soft); line-height: 1.78;
+    }
+
+    .exp-bullets li::before {
+      content: '→'; color: var(--gold);
+      flex-shrink: 0; font-size: 0.78rem; margin-top: 3px;
+    }
+
+    /* ══ SKILLS ══ */
+    .skill-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+
+    .filter-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 100px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem; font-weight: 500;
+      cursor: pointer; transition: all 0.22s var(--ease);
+    }
+
+    .filter-btn:hover { border-color: var(--gold-border); color: var(--text-soft); }
+    .filter-btn.active { background: var(--gold-dim); border-color: var(--gold-border); color: var(--gold); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-group {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px;
+      transition: all 0.28s var(--ease);
+    }
+
+    .skill-group.hidden { display: none; }
+
+    .skill-group:hover { border-color: var(--gold-border); transform: translateY(-3px); }
+
+    .sg-title {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .pills { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .pill {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+      color: var(--text-soft); padding: 5px 13px; border-radius: 100px;
+      font-size: 0.77rem; cursor: default; transition: all 0.2s var(--ease);
+    }
+
+    .pill:hover { background: var(--gold-dim); border-color: var(--gold-border); color: var(--gold); }
+
+    /* ══ EDUCATION ══ */
+    .edu-grid { display: flex; flex-direction: column; gap: 16px; }
+
+    .edu-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px;
+      display: flex; gap: 22px; align-items: flex-start;
+      transition: all 0.28s var(--ease);
+    }
+
+    .edu-card:hover { border-color: var(--gold-border); transform: translateX(4px); }
+
+    .edu-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--gold-dim); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem;
+    }
+
+    .edu-school {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 5px;
+    }
+
+    .edu-degree { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .edu-focus  { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
+
+    .edu-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.72rem; color: var(--text-muted);
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 100px;
+    }
+
+    /* ══ CERTIFICATIONS ══ */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .cert-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 40px 28px;
+      text-align: center; transition: all 0.28s var(--ease);
+    }
+
+    .cert-card:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.32);
+    }
+
+    .cert-emoji { font-size: 2.4rem; display: block; margin-bottom: 14px; }
+    .cert-card h4 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .cert-card p  { font-size: 0.8rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 18px; }
+
+    .cbadge { display: inline-block; padding: 5px 16px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; }
+    .cbadge.earned   { background: rgba(74,222,128,0.1); color: #6ee7a0; border: 1px solid rgba(74,222,128,0.28); }
+    .cbadge.progress { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+
+    /* ══ FOOTER ══ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      color: var(--text-muted); font-size: 0.8rem;
+    }
+    footer strong { color: var(--gold); }
+
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.78rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ══ FADE ══ */
+    .fade { opacity: 0; transform: translateY(14px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+    .fade.on { opacity: 1; transform: translateY(0); }
+
+    /* ══ PRINT ══ */
+    @media print {
+      nav, .tab-nav, .skill-filters, .tbar-wrap, footer { display: none !important; }
+      .tab-panel { display: block !important; margin-bottom: 40px; }
+      .exp-body { max-height: none !important; }
+      .exp-body-inner { padding: 0 24px 20px !important; }
+      body { background: white !important; color: #111 !important; }
+    }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 90px 20px 40px; }
+      .tbar-wrap { padding: 0 20px; }
+      .tabs-wrap { padding: 0 20px 72px; }
+      .edu-card { flex-direction: column; gap: 14px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo">RF</a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+    <button class="nav-print" onclick="window.print()">
+      <i class="fas fa-print"></i> Print / Save PDF
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade" id="h1">
+      <span class="pulse"></span> Interactive Resume
+    </div>
+    <h1 class="fade" id="h2">Rocco <span>Fazzalari</span></h1>
+    <p class="hero-role fade" id="h3">IT Project Manager I &nbsp;·&nbsp; Certified ScrumMaster® &nbsp;·&nbsp; UCF IT PMO</p>
+    <p class="hero-summary fade" id="h4">
+      IT Project Manager and Certified ScrumMaster® with 5+ years of experience leading technology
+      initiatives, managing project lifecycles, and coordinating cross-functional teams to deliver
+      scalable solutions. Proven ability to drive digital transformation, optimize workflows, and
+      ensure projects are delivered on time, within scope, and aligned with business objectives.
+    </p>
+    <div class="hero-chips fade" id="h5">
+      <span class="chip"><i class="fas fa-briefcase"></i> 5+ Years Experience</span>
+      <span class="chip"><i class="fas fa-arrows-rotate"></i> Certified ScrumMaster®</span>
+      <span class="chip"><i class="fas fa-scroll"></i> PMP In Progress</span>
+      <span class="chip"><i class="fas fa-building-columns"></i> UCF IT PMO</span>
+      <span class="chip"><i class="fas fa-robot"></i> AI &amp; Automation</span>
+      <span class="chip"><i class="fas fa-location-dot"></i> Orlando, FL</span>
+    </div>
+  </div>
+
+  <!-- Career Timeline Bar -->
+  <div class="tbar-wrap fade" id="h6">
+    <div class="tbar-labels">
+      <span>Career Timeline</span>
+      <span>2015 — Present</span>
+    </div>
+    <div class="tbar-track">
+      <div class="tbar-fill" id="tbar-fill"></div>
+    </div>
+    <div class="tbar-dots">
+      <div class="tbar-dot" style="left:0%">
+        <div class="tbar-dot-circle"></div>
+        <div class="tbar-dot-lbl">2015</div>
+      </div>
+      <div class="tbar-dot" style="left:45%">
+        <div class="tbar-dot-circle"></div>
+        <div class="tbar-dot-lbl">2020</div>
+      </div>
+      <div class="tbar-dot" style="left:63%">
+        <div class="tbar-dot-circle"></div>
+        <div class="tbar-dot-lbl">2022</div>
+      </div>
+      <div class="tbar-dot" style="left:73%">
+        <div class="tbar-dot-circle"></div>
+        <div class="tbar-dot-lbl">2023</div>
+      </div>
+      <div class="tbar-dot" style="left:100%">
+        <div class="tbar-dot-circle"></div>
+        <div class="tbar-dot-lbl">Present</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS ══ -->
+<div class="tabs-wrap">
+  <div class="tab-nav fade" id="h7">
+    <button class="tab-btn active" data-tab="experience">
+      <i class="fas fa-briefcase"></i> Experience
+    </button>
+    <button class="tab-btn" data-tab="skills">
+      <i class="fas fa-layer-group"></i> Skills &amp; Tools
+    </button>
+    <button class="tab-btn" data-tab="education">
+      <i class="fas fa-graduation-cap"></i> Education
+    </button>
+    <button class="tab-btn" data-tab="certifications">
+      <i class="fas fa-certificate"></i> Certifications
+    </button>
+  </div>
+
+  <!-- ─── EXPERIENCE ─── -->
+  <div class="tab-panel active" id="experience">
+    <div class="exp-timeline">
+
+      <!-- 1. UCF IT -->
+      <div class="exp-item open" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">University of Central Florida — UCF IT</span>
+                <span class="exp-current"><span class="exp-current-dot"></span>Current</span>
+              </div>
+              <div class="exp-role">IT Project Manager I</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> Feb 2026 – Present</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Coordinate and manage enterprise IT projects through the full project lifecycle, supporting planning, execution, monitoring, and implementation aligned with university technology strategy.</li>
+                <li>Serve as Scrum Master and facilitate Agile ceremonies, stakeholder working sessions, and executive status briefings to promote cross-functional collaboration and sustain project delivery momentum.</li>
+                <li>Support AI and automation initiatives by identifying opportunities to streamline workflows, reduce manual processes, and improve operational efficiency across UCF IT.</li>
+                <li>Design and facilitate AI-focused technical and learning sessions, workshops, and knowledge-sharing initiatives to educate staff on emerging technologies and responsible AI usage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. UCF DDL Coordinator -->
+      <div class="exp-item" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">University of Central Florida — Division of Digital Learning</span>
+              </div>
+              <div class="exp-role">Project Coordinator</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> May 2023 – Feb 2026</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Led the Division of Digital Learning's AI Taskforce, managing meeting facilitation, stakeholder coordination, and deliverable tracking to support AI implementation and operational improvements.</li>
+                <li>Led division-level committees in evaluating and implementing 30+ emerging technologies, including successful pilot programs with Asana, Yellowdig, and ThingLink.</li>
+                <li>Coordinated large-scale educational technology quality reviews, managing stakeholders across multiple departments to ensure timely and within-budget project completion.</li>
+                <li>Developed instructional resources including comprehensive user manuals and web-based training content, increasing end-user adoption across the division.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. UCF DDL Assistant -->
+      <div class="exp-item" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">University of Central Florida — Division of Digital Learning</span>
+              </div>
+              <div class="exp-role">Project Assistant</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> Apr 2022 – May 2023</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Coordinated complex higher-education projects using tools such as Excel, PowerPoint, and various project management platforms.</li>
+                <li>Ensured clear communication and strong collaboration with faculty, staff, and third-party vendors throughout all project phases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Shore Disney Springs -->
+      <div class="exp-item" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">Shore — Disney Springs</span>
+              </div>
+              <div class="exp-role">Sales &amp; Training Coordination Manager</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> Jul 2021 – Apr 2022</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Managed, trained, and coached a team of up to 25 associates, enhancing team productivity, customer experience, and achieving monthly sales targets.</li>
+                <li>Designed and implemented an Excel-based inventory tracking system, improving accuracy and streamlining inventory management processes.</li>
+                <li>Developed and delivered a structured onboarding and professional development program, improving employee engagement, retention, and performance.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. GODIVA -->
+      <div class="exp-item" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">GODIVA</span>
+              </div>
+              <div class="exp-role">Manager</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> Jun 2020 – Apr 2021</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Managed day-to-day team operations, overseeing scheduling, inventory control, and performance management to optimize operational efficiency.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Florida Inhouse Counsel -->
+      <div class="exp-item" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">Florida Inhouse Counsel Law Firm</span>
+              </div>
+              <div class="exp-role">Legal Intern</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> Jan 2020 – Jun 2020</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Processed and organized immigration visas and petitions, ensuring accuracy, completeness, and timely submission.</li>
+                <li>Coordinated meetings between visa petitioners and immigration attorneys and documented case updates to maintain accurate records.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Smart Solutions Realty -->
+      <div class="exp-item" data-exp>
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header" onclick="toggleExp(this)">
+            <div class="exp-header-left">
+              <div class="exp-company-row">
+                <span class="exp-company">Smart Solutions Realty, LLC</span>
+              </div>
+              <div class="exp-role">Administrative Assistant</div>
+              <div class="exp-meta">
+                <span><i class="fas fa-calendar"></i> Jan 2015 – Jan 2020</span>
+                <span><i class="fas fa-location-dot"></i> Orlando, FL</span>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down exp-chevron"></i>
+          </div>
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <ul class="exp-bullets">
+                <li>Created and managed 25+ property listings in MLS Property Manager with accurate and complete information.</li>
+                <li>Maintained detailed budget records for all brokerage clients in QuickBooks, ensuring accuracy and up-to-date financial tracking.</li>
+                <li>Collaborated with the IT administrator to update and maintain website copy, improving clarity and user experience.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SKILLS ─── -->
+  <div class="tab-panel" id="skills">
+    <div class="skill-filters">
+      <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all"></i> All</button>
+      <button class="filter-btn" data-filter="pm"><i class="fas fa-layer-group"></i> Project Mgmt</button>
+      <button class="filter-btn" data-filter="agile"><i class="fas fa-arrows-rotate"></i> Agile</button>
+      <button class="filter-btn" data-filter="ai"><i class="fas fa-robot"></i> AI &amp; Automation</button>
+      <button class="filter-btn" data-filter="tools"><i class="fas fa-screwdriver-wrench"></i> Tools</button>
+      <button class="filter-btn" data-filter="data"><i class="fas fa-chart-bar"></i> Data</button>
+      <button class="filter-btn" data-filter="comms"><i class="fas fa-pen-nib"></i> Communication</button>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group" data-category="pm">
+        <div class="sg-title"><i class="fas fa-layer-group"></i>&nbsp; Project Management</div>
+        <div class="pills">
+          <span class="pill">Project Lifecycle Management</span>
+          <span class="pill">Stakeholder Management</span>
+          <span class="pill">Requirements Gathering</span>
+          <span class="pill">Risk Management</span>
+          <span class="pill">Budget &amp; Resource Planning</span>
+          <span class="pill">Strategic Planning</span>
+          <span class="pill">Process Improvement</span>
+          <span class="pill">Change Management</span>
+          <span class="pill">Documentation &amp; Reporting</span>
+          <span class="pill">Project Scheduling</span>
+          <span class="pill">Vendor Coordination</span>
+        </div>
+      </div>
+
+      <div class="skill-group" data-category="agile">
+        <div class="sg-title"><i class="fas fa-arrows-rotate"></i>&nbsp; Agile &amp; Scrum</div>
+        <div class="pills">
+          <span class="pill">Certified ScrumMaster® (CSM)</span>
+          <span class="pill">Sprint Planning &amp; Execution</span>
+          <span class="pill">Backlog Grooming</span>
+          <span class="pill">Retrospectives &amp; Reviews</span>
+          <span class="pill">Planning Poker</span>
+          <span class="pill">Agile Transformation</span>
+          <span class="pill">Ceremony Facilitation</span>
+          <span class="pill">Agile Framework Development</span>
+          <span class="pill">Cross-functional Team Leadership</span>
+        </div>
+      </div>
+
+      <div class="skill-group" data-category="ai">
+        <div class="sg-title"><i class="fas fa-robot"></i>&nbsp; AI &amp; Automation</div>
+        <div class="pills">
+          <span class="pill">Prompt Engineering</span>
+          <span class="pill">Microsoft Copilot</span>
+          <span class="pill">Copilot Studio</span>
+          <span class="pill">AI Agent Development</span>
+          <span class="pill">AI Workflow Automation</span>
+          <span class="pill">LLM Integration</span>
+          <span class="pill">Responsible AI Practices</span>
+          <span class="pill">AI Workshop Facilitation</span>
+          <span class="pill">Power Automate</span>
+          <span class="pill">Zapier</span>
+        </div>
+      </div>
+
+      <div class="skill-group" data-category="tools">
+        <div class="sg-title"><i class="fas fa-screwdriver-wrench"></i>&nbsp; Tools &amp; Platforms</div>
+        <div class="pills">
+          <span class="pill">Azure DevOps</span>
+          <span class="pill">ServiceNow SPM</span>
+          <span class="pill">Microsoft 365 &amp; Teams</span>
+          <span class="pill">SharePoint</span>
+          <span class="pill">MS Project</span>
+          <span class="pill">Asana</span>
+          <span class="pill">Smartsheet</span>
+          <span class="pill">Trello</span>
+          <span class="pill">Workday</span>
+          <span class="pill">WordPress</span>
+          <span class="pill">Canva</span>
+          <span class="pill">Eventbrite &amp; Whova</span>
+        </div>
+      </div>
+
+      <div class="skill-group" data-category="data">
+        <div class="sg-title"><i class="fas fa-chart-bar"></i>&nbsp; Data &amp; Analytics</div>
+        <div class="pills">
+          <span class="pill">Power BI</span>
+          <span class="pill">Excel (Level 2 Certified)</span>
+          <span class="pill">Qualtrics</span>
+          <span class="pill">Quantitative Analysis</span>
+          <span class="pill">Qualitative Analysis</span>
+          <span class="pill">Data-Driven Decision Making</span>
+        </div>
+      </div>
+
+      <div class="skill-group" data-category="comms">
+        <div class="sg-title"><i class="fas fa-pen-nib"></i>&nbsp; Communication &amp; Writing</div>
+        <div class="pills">
+          <span class="pill">Technical Writing</span>
+          <span class="pill">Instructional Design</span>
+          <span class="pill">Knowledge Transfer Facilitation</span>
+          <span class="pill">Workshop Design &amp; Delivery</span>
+          <span class="pill">Executive Reporting</span>
+          <span class="pill">HTML &amp; CSS</span>
+          <span class="pill">Microsoft Office Suite</span>
+          <span class="pill">Google Workspace</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── EDUCATION ─── -->
+  <div class="tab-panel" id="education">
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <div class="edu-school">University of Central Florida</div>
+          <div class="edu-degree">Master of Arts in Technical Communications</div>
+          <div class="edu-focus">Focus: Project Management &amp; Technical Writing</div>
+          <span class="edu-badge"><i class="fas fa-calendar"></i> May 2024</span>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-book-open"></i></div>
+        <div>
+          <div class="edu-school">University of Central Florida</div>
+          <div class="edu-degree">Bachelor of Arts in English Literature — University Honors</div>
+          <div class="edu-focus">Focus: American Literature &amp; Literary Theory &nbsp;·&nbsp; Minor in Legal Studies</div>
+          <span class="edu-badge"><i class="fas fa-calendar"></i> December 2019</span>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-building-columns"></i></div>
+        <div>
+          <div class="edu-school">Valencia College</div>
+          <div class="edu-degree">Associate of Arts in General Studies</div>
+          <div class="edu-focus">&nbsp;</div>
+          <span class="edu-badge"><i class="fas fa-calendar"></i> August 2017</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── CERTIFICATIONS ─── -->
+  <div class="tab-panel" id="certifications">
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <span class="cert-emoji">⚙️</span>
+        <h4>Certified ScrumMaster®</h4>
+        <p>Scrum Alliance<br>Agile Scrum Methodology<br>Active Practice</p>
+        <span class="cbadge earned">✓ Earned</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-emoji">📜</span>
+        <h4>PMP</h4>
+        <p>Project Management Professional<br>PMI · PMBOK 7th / 8th Edition</p>
+        <span class="cbadge progress">⏳ In Progress</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span>© 2026 <strong>Rocco Fazzalari</strong> &nbsp;·&nbsp; Interactive Resume</span>
+  <div class="footer-links">
+    <a href="index.html"><i class="fas fa-house"></i> Back to Home</a>
+    <a href="https://www.linkedin.com/in/rocco-fazzalari-425902148/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+  </div>
+</footer>
+
+<script>
+  // ── Staggered hero fade in ──
+  ['h1','h2','h3','h4','h5'].forEach((id, i) => {
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('on');
+    }, 100 + i * 130);
+  });
+
+  // Timeline bar fill
+  setTimeout(() => {
+    document.getElementById('tbar-fill').style.width = '100%';
+    document.getElementById('h6')?.classList.add('on');
+  }, 750);
+
+  setTimeout(() => {
+    document.getElementById('h7')?.classList.add('on');
+  }, 950);
+
+  // ── Tab switching ──
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── Experience expand/collapse ──
+  function toggleExp(header) {
+    const item     = header.closest('[data-exp]');
+    const isOpen   = item.classList.contains('open');
+    document.querySelectorAll('[data-exp]').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── Skill filter ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.skill-group').forEach(g => {
+        g.classList.toggle('hidden', f !== 'all' && g.dataset.category !== f);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
