@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rocco Fazzalari | IT Project Manager</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +36,7 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 1000;
       padding: 16px 40px;
@@ -57,12 +56,13 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── BUTTONS ── */
+    /* BUTTONS */
     .btn-primary {
       background: var(--accent); color: #000;
       padding: 12px 24px; border-radius: 8px;
       font-weight: 700; font-size: 0.85rem;
       text-decoration: none; transition: var(--ease);
+      display: inline-block;
     }
     .btn-primary:hover {
       background: var(--accent2);
@@ -76,10 +76,11 @@
       text-decoration: none;
       border: 1px solid rgba(255,255,255,0.15);
       transition: var(--ease);
+      display: inline-block;
     }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
@@ -141,15 +142,9 @@
     .stat-num { font-size: 1.9rem; font-weight: 800; color: var(--accent); line-height: 1; }
     .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* ── SECTION SHELLS ── */
-    .sec {
-      padding: 100px 40px;
-      max-width: 1000px; margin: 0 auto;
-    }
-    .sec-full {
-      padding: 100px 40px;
-      background: var(--bg2);
-    }
+    /* SECTIONS */
+    .sec { padding: 100px 40px; max-width: 1000px; margin: 0 auto; }
+    .sec-full { padding: 100px 40px; background: var(--bg2); }
     .sec-full .inner { max-width: 1000px; margin: 0 auto; }
 
     .sec-label {
@@ -163,7 +158,7 @@
     }
     .sec-desc { color: var(--muted); max-width: 540px; margin-bottom: 52px; font-size: 0.92rem; }
 
-    /* ── ABOUT ── */
+    /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 0.93rem; line-height: 1.85; }
     .about-text p strong { color: var(--text); }
@@ -186,17 +181,12 @@
     .info-card h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
     .info-card p  { font-size: 0.78rem; color: var(--muted); }
 
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 20px;
-    }
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
     .skill-cat {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px; padding: 28px;
-      transition: var(--ease);
+      border-radius: 16px; padding: 28px; transition: var(--ease);
     }
     .skill-cat:hover { border-color: var(--border); transform: translateY(-4px); }
     .skill-cat h3 {
@@ -216,32 +206,23 @@
       border-radius: 2px; transition: width 1.2s ease;
     }
 
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
-      gap: 24px;
-    }
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 24px; }
     .project-card {
       background: var(--card);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px; padding: 32px;
-      position: relative; overflow: hidden;
-      transition: var(--ease);
+      position: relative; overflow: hidden; transition: var(--ease);
     }
     .project-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--accent), transparent);
       opacity: 0; transition: var(--ease);
     }
     .project-card:hover { border-color: var(--border); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
     .project-card:hover::before { opacity: 1; }
     .project-icon { font-size: 1.8rem; margin-bottom: 16px; }
-    .project-status {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.72rem; color: #4ade80; margin-bottom: 10px;
-    }
+    .project-status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; color: #4ade80; margin-bottom: 10px; }
     .project-status .dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: blink 2s infinite; }
     .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
     .project-card p  { font-size: 0.86rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
@@ -253,12 +234,8 @@
       font-size: 0.72rem; font-weight: 500;
     }
 
-    /* ── CERTS ── */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 20px;
-    }
+    /* CERTS */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
     .cert-card {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.06);
@@ -278,7 +255,7 @@
     }
     .badge.progress { background: rgba(251,191,36,0.1); color: #fbbf24; border-color: rgba(251,191,36,0.25); }
 
-    /* ── CONTACT ── */
+    /* CONTACT */
     .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .contact-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
     .contact-info p  { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 32px; }
@@ -315,7 +292,7 @@
     }
     .btn-send:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,201,4,0.3); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: var(--bg2);
       border-top: 1px solid rgba(255,255,255,0.05);
@@ -324,11 +301,11 @@
     }
     footer strong { color: var(--accent); }
 
-    /* ── FADE-IN ── */
+    /* FADE-IN */
     .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fi.on { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
@@ -349,10 +326,10 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="btn-primary">Get In Touch</a>
+  <a href="#contact" class="btn-primary">Let's Talk</a>
 </nav>
 
 <!-- HERO -->
@@ -363,7 +340,7 @@
     <h1>Rocco <span>Fazzalari</span></h1>
     <p class="hero-sub">IT Project Manager · Scrum Master · PMP Candidate — driving agile transformation and enterprise IT delivery at the University of Central Florida.</p>
     <div class="hero-cta">
-      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#projects" class="btn-primary">View Projects</a>
       <a href="#contact" class="btn-secondary">Let's Connect</a>
     </div>
     <div class="hero-stats">
@@ -386,10 +363,22 @@
       <p>I'm passionate about bridging technical execution with stakeholder communication — ensuring projects land with clarity, structure, and real business impact.</p>
     </div>
     <div class="about-cards fi">
-      <div class="info-card"><div class="info-icon"><i class="fas fa-building"></i></div><div><h4>University of Central Florida</h4><p>IT Project Management Office · Orlando, FL</p></div></div>
-      <div class="info-card"><div class="info-icon"><i class="fas fa-briefcase"></i></div><div><h4>IT Project Manager I</h4><p>Governance, Delivery & Process Improvement</p></div></div>
-      <div class="info-card"><div class="info-icon"><i class="fas fa-users"></i></div><div><h4>Scrum Master</h4><p>AI/Automations Team · UCF IT</p></div></div>
-      <div class="info-card"><div class="info-icon"><i class="fas fa-graduation-cap"></i></div><div><h4>PMP Candidate</h4><p>PMBOK 8th Edition · In Progress</p></div></div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-building"></i></div>
+        <div><h4>University of Central Florida</h4><p>IT Project Management Office · Orlando, FL</p></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-briefcase"></i></div>
+        <div><h4>IT Project Manager I</h4><p>Governance, Delivery & Process Improvement</p></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-users"></i></div>
+        <div><h4>Scrum Master</h4><p>AI/Automations Team · UCF IT</p></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div><h4>PMP Candidate</h4><p>PMBOK 8th Edition · In Progress</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -398,29 +387,29 @@
 <div id="skills" class="sec-full">
   <div class="inner">
     <div class="sec-label fi">What I Do</div>
-    <h2 class="sec-title fi">Skills & Tools</h2>
+    <h2 class="sec-title fi">Skills &amp; Tools</h2>
     <p class="sec-desc fi">A mix of project management methodology, agile practice, and enterprise platform expertise.</p>
     <div class="skills-grid">
       <div class="skill-cat fi">
-        <h3><i class="fas fa-project-diagram"></i> Project Management</h3>
+        <h3><i class="fas fa-project-diagram"></i>&nbsp; Project Management</h3>
         <div class="skill-list">
           <div class="skill-item"><div class="skill-hd"><span>Project Governance</span><span>Expert</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="95"></div></div></div>
           <div class="skill-item"><div class="skill-hd"><span>Stakeholder Communication</span><span>Expert</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="92"></div></div></div>
           <div class="skill-item"><div class="skill-hd"><span>Risk Management</span><span>Advanced</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="85"></div></div></div>
-          <div class="skill-item"><div class="skill-hd"><span>Budget & Resource Planning</span><span>Advanced</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="80"></div></div></div>
+          <div class="skill-item"><div class="skill-hd"><span>Budget &amp; Resource Planning</span><span>Advanced</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="80"></div></div></div>
         </div>
       </div>
       <div class="skill-cat fi">
-        <h3><i class="fas fa-sync-alt"></i> Agile & Scrum</h3>
+        <h3><i class="fas fa-sync-alt"></i>&nbsp; Agile &amp; Scrum</h3>
         <div class="skill-list">
           <div class="skill-item"><div class="skill-hd"><span>Scrum Master</span><span>Expert</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="93"></div></div></div>
-          <div class="skill-item"><div class="skill-hd"><span>Sprint Planning & Retros</span><span>Expert</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="90"></div></div></div>
+          <div class="skill-item"><div class="skill-hd"><span>Sprint Planning &amp; Retros</span><span>Expert</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="90"></div></div></div>
           <div class="skill-item"><div class="skill-hd"><span>Azure DevOps</span><span>Advanced</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="82"></div></div></div>
           <div class="skill-item"><div class="skill-hd"><span>Agile Transformation</span><span>Advanced</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="88"></div></div></div>
         </div>
       </div>
       <div class="skill-cat fi">
-        <h3><i class="fas fa-tools"></i> Platforms & Tools</h3>
+        <h3><i class="fas fa-tools"></i>&nbsp; Platforms &amp; Tools</h3>
         <div class="skill-list">
           <div class="skill-item"><div class="skill-hd"><span>Microsoft 365 / Teams</span><span>Expert</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="95"></div></div></div>
           <div class="skill-item"><div class="skill-hd"><span>ServiceNow SPM</span><span>Advanced</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="80"></div></div></div>
@@ -455,8 +444,8 @@
     <div class="project-card fi">
       <div class="project-icon">📋</div>
       <div class="project-status"><span class="dot"></span>Active</div>
-      <h3>Project Intake & Governance Redesign</h3>
-      <p>Redesigning UCF IT's project intake process with a multi-criteria scoring rubric and governance escalation triggers (IT Executive Council, IT Governance Review). Standardizing how projects are evaluated and approved.</p>
+      <h3>Project Intake &amp; Governance Redesign</h3>
+      <p>Redesigning UCF IT's project intake process with a multi-criteria scoring rubric and governance escalation triggers. Standardizing how projects are evaluated and approved across the PMO.</p>
       <div class="tags"><span class="tag">Governance</span><span class="tag">Process Improvement</span><span class="tag">ServiceNow</span><span class="tag">PMO</span></div>
     </div>
     <div class="project-card fi">
@@ -478,3 +467,80 @@
     <div class="cert-grid">
       <div class="cert-card fi"><div class="icon">📜</div><h4>PMP</h4><p>Project Management Professional — PMI · PMBOK 8th Ed.</p><span class="badge progress">In Progress</span></div>
       <div class="cert-card fi"><div class="icon">⚙️</div><h4>Scrum Master</h4><p>Agile Scrum Methodology</p><span class="badge">Active Practice</span></div>
+      <div class="cert-card fi"><div class="icon">☁️</div><h4>Microsoft Azure</h4><p>Cloud Platform &amp; DevOps</p><span class="badge">Working Knowledge</span></div>
+      <div class="cert-card fi"><div class="icon">🏛️</div><h4>UCF IT PMO</h4><p>Project Management Office Standards</p><span class="badge">Practitioner</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-label fi">Say Hello</div>
+  <h2 class="sec-title fi">Get In Touch</h2>
+  <div class="contact-wrap">
+    <div class="contact-info fi">
+      <h3>Let's connect</h3>
+      <p>Whether it's a collaboration, a project management question, or just a professional connection — I'd love to hear from you.</p>
+      <div class="clinks">
+        <a href="mailto:your.email@ucf.edu" class="clink"><i class="fas fa-envelope"></i> your.email@ucf.edu</a>
+        <a href="https://linkedin.com/in/yourprofile" class="clink" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/yourprofile</a>
+        <a href="https://github.com/yourusername" class="clink" target="_blank"><i class="fab fa-github"></i> github.com/yourusername</a>
+        <span class="clink"><i class="fas fa-map-marker-alt"></i> Orlando, FL · University of Central Florida</span>
+      </div>
+    </div>
+    <form class="cform fi" onsubmit="handleSubmit(event)">
+      <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+      <div class="fg"><label>Message</label><textarea placeholder="What's on your mind?" required></textarea></div>
+      <button type="submit" class="btn-send">Send Message &nbsp;<i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Rocco Fazzalari</strong> · Built with GitHub Pages · UCF IT Project Manager</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        e.target.querySelectorAll('.skill-bar-fill').forEach(b => {
+          b.style.width = b.dataset.w + '%';
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+  document.getElementById('hero-el').classList.add('on');
+
+  // Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+  });
+
+  // Active nav highlight
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section[id], div[id]').forEach(s => {
+      if (window.scrollY >= s.offsetTop - 130) cur = s.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
+    });
+  });
+
+  // Contact form handler (placeholder)
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thanks for your message! (Connect this to Formspree for real emails.)');
+  }
+</script>
+
+</body>
+</html>
